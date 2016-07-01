@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"XHNetworkCache";
-    
+        
     //将数据写入缓存(参数1:JSON数据,参数2:数据请求URL)
     //[XHNetworkCache saveJsonResponseToCacheFile:response_dic andURL:URLString];
     

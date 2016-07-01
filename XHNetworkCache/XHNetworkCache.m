@@ -4,7 +4,7 @@
 //
 //  Created by xiaohui on 16/6/25.
 //  Copyright © 2016年 qiantou. All rights reserved.
-//  https://github.com/CoderZhuXH/XHNetworkCache
+//  代码地址:https://github.com/CoderZhuXH/XHNetworkCache
 
 #import "XHNetworkCache.h"
 #import <CommonCrypto/CommonDigest.h>
@@ -41,9 +41,7 @@
 
 + (NSString *)cacheFilePathWithURL:(NSString *)URL {
     
-    NSString *pathOfLibrary = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"XHNetworkCache"];
-    
+    NSString *path = [self cachePath];
     [self checkDirectory:path];//check路径
     DebugLog(@"path = %@",path);
     
@@ -51,6 +49,12 @@
     NSString *cacheFileNameString = [NSString stringWithFormat:@"URL:%@ AppVersion:%@",URL,[self appVersionString]];
     NSString *cacheFileName = [self md5StringFromString:cacheFileNameString];
     path = [path stringByAppendingPathComponent:cacheFileName];
+    return path;
+}
++(NSString *)cachePath
+{
+    NSString *pathOfLibrary = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *path = [pathOfLibrary stringByAppendingPathComponent:@"XHNetworkCache"];
     return path;
 }
 
@@ -109,4 +113,34 @@
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
++(BOOL)clearCache
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *path = [self cachePath];
+    return [fileManager removeItemAtPath:path error:nil];
+}
++ (float)cacheSize{
+    NSString *directoryPath = [self cachePath];
+    BOOL isDir = NO;
+    unsigned long long total = 0;
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:directoryPath isDirectory:&isDir]) {
+        if (isDir) {
+            NSError *error = nil;
+            NSArray *array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directoryPath error:&error];
+            
+            if (error == nil) {
+                for (NSString *subpath in array) {
+                    NSString *path = [directoryPath stringByAppendingPathComponent:subpath];
+                    NSDictionary *dict = [[NSFileManager defaultManager] attributesOfItemAtPath:path
+                                                                                          error:&error];
+                    if (!error) {
+                        total += [dict[NSFileSize] unsignedIntegerValue];
+                    }
+                }
+            }
+        }
+    }
+    return total/(1024.0*1024.0);
+}
 @end

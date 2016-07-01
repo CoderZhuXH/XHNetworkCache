@@ -1,10 +1,17 @@
 # XHNetworkCache
-#### 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
+* 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
 ###技术交流群(群号:537476189)
+### 版本记录(持续更新)
+#### 2016.07.01  Version 1.1(更新)
+* 1.加入手动清除缓存接口
+* 2.加入获取缓存大小接口<br>
+#### 2016.06.24  Version 1.0(发布)
+
 ## 使用方法:
 ### 1.写入
 ```objc
 //将数据写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
+//[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
 [XHNetworkCache saveJsonResponseToCacheFile:responseObject andURL:URLString];
 
 ```
@@ -13,6 +20,18 @@
 //获取缓存数据(参数:请求URL,返回:JSON数据)
 id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 
+```
+### 3.清除缓存
+```objc
+//清除缓存
+[XHNetworkCache clearCache];
+
+```
+
+### 4.获取缓存总大小(M)
+```objc
+//获取缓存总大小(M)
+float cacheSize = [XHNetworkCache cacheSize];
 ```
 ##  安装
 ### 手动添加:<br>
@@ -29,4 +48,3 @@ id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 
 ##  许可证
     XHNetworkCache 使用 MIT 许可证，详情见 LICENSE 文件
-

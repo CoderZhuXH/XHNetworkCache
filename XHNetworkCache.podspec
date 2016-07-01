@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "XHNetworkCache"
-  s.version      = "1.0"
+  s.version      = "1.1"
   s.summary      = "一行代码将请求数据写入磁盘缓存"
   s.homepage     = "https://github.com/CoderZhuXH/XHNetworkCache"
   s.license      = { :type => "MIT", :file => "LICENSE" }
