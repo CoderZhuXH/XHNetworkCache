@@ -4,11 +4,11 @@
 //
 //  Created by xiaohui on 16/6/25.
 //  Copyright © 2016年 qiantou. All rights reserved.
-//
+//  代码地址:https://github.com/CoderZhuXH/XHNetworkCache
 
 #import "ViewController.h"
-#import "AFNetworking.h"
 #import "XHNetworkCache.h"
+#import "XHNetwork.h"
 
 @interface ViewController ()
 
@@ -20,50 +20,44 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"XHNetworkCache";
-        
-    //将数据写入缓存(参数1:JSON数据,参数2:数据请求URL)
-    //[XHNetworkCache saveJsonResponseToCacheFile:response_dic andURL:URLString];
-    
-    //获取缓存数据(参数:请求URL,返回:JSON数据)
-    //id cache = [XHNetworkCache cacheJsonWithURL:URLString];
-    
     
     //Example:
     NSString *URLString = @"http://www.qinto.com/wap/index.php?ctl=article_cate&act=api_app_getarticle_cate&num=1&p=1";
-    //数据请求(实际项目中请封装数据请求,此处不做封装)
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];//请求类型:HTTP
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];//返回的结果:JSON
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
-
-    [manager POST:URLString parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    
+    //1.获取缓存数据(参数:请求URL,返回:JSON数据)
+    id cacheJson = [XHNetworkCache cacheJsonWithURL:URLString];
+    if(cacheJson) NSLog(@"缓存cacheJson=%@",cacheJson);
+    
+    [XHNetwork POST:URLString parameters:nil success:^(id responseObject) {
+      
         NSLog(@"返回数据\n res=%@",responseObject);
         NSDictionary *response_dic = responseObject;
-        NSInteger status = [responseObject[@"status"] integerValue];
+        NSInteger status = [response_dic[@"status"] integerValue];
         //判断数据合法性(此处根据自己服务器返回状态码,进行判断)
         if(status==200)
         {
-            //写入缓存
+            //2.将数据写入/更新缓存(参数1:JSON数据,参数2:数据请求URL)
             [XHNetworkCache saveJsonResponseToCacheFile:response_dic andURL:URLString];
             
-            //获取缓存
-            //id cache = [XHNetworkCache cacheJsonWithURL:URLString];
-            //NSLog(@"缓存\n cache=%@",cache);
+            //3.获取缓存大小(M)
+            float cacheSize = [XHNetworkCache cacheSize];
+            NSLog(@"缓存大小:%fM",cacheSize);
             
-            //其他操作
-            //TO DO...
+            //4.清空缓存
+            //[XHNetworkCache clearCache];
             
+            //刷新UI
+            //...
         }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"error=%@",error);
+    } failure:^(NSError *error) {
         
     }];
+    
 
-}
+    
+
+    
+ }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
