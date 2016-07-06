@@ -56,10 +56,13 @@ float cacheSize = [XHNetworkCache cacheSize];
 *   1.将 XHNetworkCache 文件夹添加到工程目录中<br>
 *   2.导入 XHNetworkCache.h
 
-### CocoaPods:<br>
+## CocoaPods:<br>
 *   1.在 Podfile 中添加 pod 'XHNetworkCache'<br>
 *   2.执行 pod install 或 pod update<br>
 *   3.导入 XHNetworkCache.h
+
+## Tips
+*	如果你发现你执行pod install后,导入的不是最新的,请删除Podfile.lock文件,在执行一次 pod install
 
 ##  系统要求
 *   该项目最低支持 iOS 7.0 和 Xcode 7.0
