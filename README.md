@@ -33,7 +33,7 @@
  }];
 
 ```
-### 3.获取
+### 3.获取缓存数据
 ```objc
 //获取缓存数据(参数:请求URL,返回:JSON数据)
 id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
