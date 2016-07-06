@@ -25,11 +25,12 @@
 ### 2.(异步)写入
 ```objc
 //将数据(异步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
- [XHNetworkCache save_asyncJsonResponseToCacheFile:responseObject andURL:URLString completed:^(BOOL result) {
+//[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
+[XHNetworkCache save_asyncJsonResponseToCacheFile:responseObject andURL:URLString completed:^(BOOL result) {
                
   if(result)  NSLog(@"(异步)写入/更新缓存数据 成功");
                
-  }];
+ }];
 
 ```
 ### 3.获取
