@@ -10,6 +10,8 @@
 #import "XHNetworkCache.h"
 #import "XHNetwork.h"
 
+#define URLString @"http://www.qinto.com/wap/index.php?ctl=article_cate&act=api_app_getarticle_cate&num=1&p=1"
+
 @interface ViewController ()
 
 @end
@@ -20,44 +22,85 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"XHNetworkCache";
-    
-    //Example:
-    NSString *URLString = @"http://www.qinto.com/wap/index.php?ctl=article_cate&act=api_app_getarticle_cate&num=1&p=1";
-    
-    //1.获取缓存数据(参数:请求URL,返回:JSON数据)
-    id cacheJson = [XHNetworkCache cacheJsonWithURL:URLString];
-    if(cacheJson) NSLog(@"缓存cacheJson=%@",cacheJson);
-    
+}
+/**
+ *  (同步)写入/更新缓存数据
+ */
+- (IBAction)save:(UIButton *)sender {
+
     [XHNetwork POST:URLString parameters:nil success:^(id responseObject) {
-      
-        NSLog(@"返回数据\n res=%@",responseObject);
+        
         NSDictionary *response_dic = responseObject;
         NSInteger status = [response_dic[@"status"] integerValue];
         //判断数据合法性(此处根据自己服务器返回状态码,进行判断)
         if(status==200)
         {
-            //2.将数据写入/更新缓存(参数1:JSON数据,参数2:数据请求URL)
-            [XHNetworkCache saveJsonResponseToCacheFile:response_dic andURL:URLString];
+            //(同步)写入/更新缓存数据
+            //参数1:JSON数据,参数2:数据请求URL
+            BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:response_dic andURL:URLString];
+            if(result) NSLog(@"(同步)写入/更新缓存数据 成功");
             
-            //3.获取缓存大小(M)
-            float cacheSize = [XHNetworkCache cacheSize];
-            NSLog(@"缓存大小:%fM",cacheSize);
-            
-            //4.清空缓存
-            //[XHNetworkCache clearCache];
-            
-            //刷新UI
-            //...
+            //TO DO...
         }
     } failure:^(NSError *error) {
         
     }];
-    
+}
+/**
+ *  (异步)写入/更新缓存数据
+ */
+- (IBAction)save_async:(id)sender {
 
-    
+    [XHNetwork POST:URLString parameters:nil success:^(id responseObject) {
+        
+        NSDictionary *response_dic = responseObject;
+        NSInteger status = [response_dic[@"status"] integerValue];
+        //判断数据合法性(此处根据自己服务器返回状态码,进行判断)
+        if(status==200)
+        {
+            //(异步步)写入/更新缓存数据
+            //参数1:JSON数据,参数2:数据请求URL
+            [XHNetworkCache save_asyncJsonResponseToCacheFile:response_dic andURL:URLString completed:^(BOOL result) {
+               
+                if(result)  NSLog(@"(异步)写入/更新缓存数据 成功");
+                
+            }];
+            
+            //TO DO...
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+/**
+ *  获取缓存数据
+ */
+- (IBAction)getCache:(id)sender{
 
+    //获取缓存数据
+    //参数:数据请求URL
+    id cacheJson = [XHNetworkCache cacheJsonWithURL:URLString];
+    NSLog(@"缓存数据:%@",cacheJson);
+}
+/**
+ *  缓存数据大小(M)
+ */
+- (IBAction)cacheSize:(id)sender {
     
- }
+    float size = [XHNetworkCache cacheSize];
+    NSLog(@"缓存大小:%f M",size);
+}
+/**
+ *  清除缓存
+ */
+- (IBAction)clearCache:(id)sender {
+    
+    BOOL result = [XHNetworkCache clearCache];
+    if(result) NSLog(@"缓存清除成功");
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

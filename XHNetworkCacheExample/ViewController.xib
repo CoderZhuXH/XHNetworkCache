@@ -15,40 +15,122 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一行代码写入数据缓存" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwM-QK-FV3">
-                    <rect key="frame" x="0.0" y="244" width="320" height="80"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="EYP-1z-fSq"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请看控制台打印" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDf-t6-KW2">
-                    <rect key="frame" x="0.0" y="324" width="320" height="45"/>
+                    <rect key="frame" x="0.0" y="380" width="320" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="vin-VP-qiQ"/>
+                        <constraint firstAttribute="height" constant="45" id="hGq-kT-ZeB"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WN-m7-3Qv">
+                    <rect key="frame" x="0.0" y="100" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ME1-v4-HKx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="(同步)写入/更新缓存">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="save:" destination="-1" eventType="touchUpInside" id="5RV-Lh-Z6X"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-ZF-UAc">
+                    <rect key="frame" x="0.0" y="155" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Jpw-OE-Xos"/>
+                        <constraint firstAttribute="height" constant="40" id="N3D-CC-K1y"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="(异步)写入/更新缓存">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="save_async:" destination="-1" eventType="touchUpInside" id="Fm5-dc-Ek3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hx-4h-CnK">
+                    <rect key="frame" x="0.0" y="210" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="0V3-xm-4wG"/>
+                        <constraint firstAttribute="height" constant="40" id="8XJ-y8-21u"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="获取缓存数据">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getCache:" destination="-1" eventType="touchUpInside" id="vQH-21-rlE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PX0-En-m7V">
+                    <rect key="frame" x="0.0" y="320" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="7Rx-Hb-Go2"/>
+                        <constraint firstAttribute="height" constant="40" id="LuP-qb-iFG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="清除缓存">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clearCache:" destination="-1" eventType="touchUpInside" id="Qck-pn-wBd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzD-Yt-qDp">
+                    <rect key="frame" x="0.0" y="265" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="7an-Of-csA"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="gkH-rI-piw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="获取缓存大小">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cacheSize:" destination="-1" eventType="touchUpInside" id="5Gx-RU-YJ0"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="gwM-QK-FV3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2dg-yX-y7T"/>
+                <constraint firstItem="TWl-ZF-UAc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="10A-dS-ndH"/>
+                <constraint firstAttribute="trailing" secondItem="pzD-Yt-qDp" secondAttribute="trailing" id="15U-zS-To2"/>
                 <constraint firstAttribute="bottom" secondItem="EDf-t6-KW2" secondAttribute="bottom" id="47h-4y-tjt"/>
-                <constraint firstAttribute="trailing" secondItem="EDf-t6-KW2" secondAttribute="trailing" id="9TH-aS-u6s"/>
-                <constraint firstItem="EDf-t6-KW2" firstAttribute="top" secondItem="gwM-QK-FV3" secondAttribute="bottom" id="KMp-Fo-7cT"/>
-                <constraint firstItem="EDf-t6-KW2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OVd-XP-0XM"/>
-                <constraint firstItem="gwM-QK-FV3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gLI-hM-yps"/>
-                <constraint firstItem="gwM-QK-FV3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="plo-tT-KPX"/>
-                <constraint firstAttribute="trailing" secondItem="gwM-QK-FV3" secondAttribute="trailing" id="rGh-xg-uZv"/>
+                <constraint firstItem="pzD-Yt-qDp" firstAttribute="top" secondItem="PX0-En-m7V" secondAttribute="bottom" constant="15" id="CGg-3p-Wjg"/>
+                <constraint firstAttribute="trailing" secondItem="PX0-En-m7V" secondAttribute="trailing" id="G1r-37-juF"/>
+                <constraint firstItem="6WN-m7-3Qv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QRO-aI-3lg"/>
+                <constraint firstAttribute="bottom" secondItem="EDf-t6-KW2" secondAttribute="bottom" constant="10" id="R0X-dK-VSn"/>
+                <constraint firstItem="9hx-4h-CnK" firstAttribute="top" secondItem="TWl-ZF-UAc" secondAttribute="bottom" constant="15" id="RWR-r9-49m"/>
+                <constraint firstItem="9hx-4h-CnK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vwr-r0-6cc"/>
+                <constraint firstAttribute="trailing" secondItem="9hx-4h-CnK" secondAttribute="trailing" id="WT4-S9-qwe"/>
+                <constraint firstItem="pzD-Yt-qDp" firstAttribute="top" secondItem="9hx-4h-CnK" secondAttribute="bottom" constant="15" id="a8h-Ng-ohF"/>
+                <constraint firstItem="PX0-En-m7V" firstAttribute="top" secondItem="pzD-Yt-qDp" secondAttribute="bottom" constant="15" id="bjn-WE-IIp"/>
+                <constraint firstItem="PX0-En-m7V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cDN-AI-w7I"/>
+                <constraint firstItem="6WN-m7-3Qv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="ftW-ep-wv5"/>
+                <constraint firstItem="pzD-Yt-qDp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gKF-0F-i5j"/>
+                <constraint firstAttribute="trailing" secondItem="TWl-ZF-UAc" secondAttribute="trailing" id="ip7-px-E5o"/>
+                <constraint firstItem="TWl-ZF-UAc" firstAttribute="top" secondItem="6WN-m7-3Qv" secondAttribute="bottom" constant="15" id="mn1-KD-dTs"/>
+                <constraint firstAttribute="trailing" secondItem="6WN-m7-3Qv" secondAttribute="trailing" id="oMb-9S-GGQ"/>
+                <constraint firstItem="PX0-En-m7V" firstAttribute="top" secondItem="9hx-4h-CnK" secondAttribute="bottom" constant="15" id="pOi-If-Rpj"/>
+                <constraint firstItem="EDf-t6-KW2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pQd-dB-r4G"/>
+                <constraint firstAttribute="trailing" secondItem="EDf-t6-KW2" secondAttribute="trailing" id="qA1-3K-OtI"/>
+                <constraint firstItem="EDf-t6-KW2" firstAttribute="top" secondItem="PX0-En-m7V" secondAttribute="bottom" constant="20" id="tzk-4R-d7Y"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="CGg-3p-Wjg"/>
+                    <exclude reference="pOi-If-Rpj"/>
                     <exclude reference="47h-4y-tjt"/>
+                    <exclude reference="R0X-dK-VSn"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="336" y="250"/>

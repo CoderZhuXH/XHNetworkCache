@@ -5,6 +5,9 @@
 
 ### 版本记录(持续更新)
 
+#### 2016.07.06  Version 1.2(更新)
+* 1.增加异步写入/更新缓存接口<br>
+
 #### 2016.07.01  Version 1.1(更新)
 * 1.增加手动清除缓存接口
 * 2.增加获取缓存大小接口<br>
@@ -12,27 +15,37 @@
 #### 2016.06.24  Version 1.0(发布)
 
 ## 使用方法:
-### 1.写入
+### 1.(同步)写入
 ```objc
-//将数据写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
+//将数据(同步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
 [XHNetworkCache saveJsonResponseToCacheFile:responseObject andURL:URLString];
 
 ```
-### 2.获取
+### 2.(异步)写入
+```objc
+//将数据(异步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
+ [XHNetworkCache save_asyncJsonResponseToCacheFile:response_dic andURL:URLString completed:^(BOOL result) {
+               
+  if(result)  NSLog(@"(异步)写入/更新缓存数据 成功");
+               
+  }];
+
+```
+### 3.获取
 ```objc
 //获取缓存数据(参数:请求URL,返回:JSON数据)
 id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 
 ```
-### 3.清除缓存
+### 4.清除缓存
 ```objc
 //清除缓存
 [XHNetworkCache clearCache];
 
 ```
 
-### 4.获取缓存总大小(M)
+### 5.获取缓存总大小(M)
 ```objc
 //获取缓存总大小(M)
 float cacheSize = [XHNetworkCache cacheSize];

@@ -19,37 +19,54 @@
 
 +(BOOL)saveJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL
 {
-    if(jsonResponse!=nil)
-    {
-        BOOL state =[NSKeyedArchiver archiveRootObject:jsonResponse toFile:[self cacheFilePathWithURL:URL]];
-        if(state)  DebugLog(@"缓存写入/更新成功");
-        return state;
-    }
-    return NO;
+    if(jsonResponse==nil) return NO;
+    NSData * data= [self jsonToData:jsonResponse];
+    return[[NSFileManager defaultManager] createFileAtPath:[self cacheFilePathWithURL:URL] contents:data attributes:nil];
 }
-
++(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(XHNetworkCacheCompletionBlock)completedBlock;
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        BOOL result=[self saveJsonResponseToCacheFile:jsonResponse andURL:URL];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(completedBlock)
+            {
+                completedBlock(result);
+            }
+        });
+    });
+}
 +(id )cacheJsonWithURL:(NSString *)URL
 {
     NSString *path = [self cacheFilePathWithURL:URL];
-    id cacheJson;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:path isDirectory:nil] == YES) {
-        cacheJson = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        NSData *data = [fileManager contentsAtPath:path];
+        return [self dataToJson:data];
     }
-    return cacheJson;
+    return nil;
 }
-
 + (NSString *)cacheFilePathWithURL:(NSString *)URL {
     
     NSString *path = [self cachePath];
     [self checkDirectory:path];//check路径
-    DebugLog(@"path = %@",path);
-    
     //文件名
     NSString *cacheFileNameString = [NSString stringWithFormat:@"URL:%@ AppVersion:%@",URL,[self appVersionString]];
     NSString *cacheFileName = [self md5StringFromString:cacheFileNameString];
     path = [path stringByAppendingPathComponent:cacheFileName];
     return path;
+}
++(NSData *)jsonToData:(id)jsonResponse
+{
+    if(jsonResponse==nil) return nil;
+    return [NSJSONSerialization dataWithJSONObject:jsonResponse options:NSJSONWritingPrettyPrinted error:nil];
+}
++(id)dataToJson:(NSData *)data
+{
+    if(data==nil) return nil;
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 +(NSString *)cachePath
 {
@@ -80,6 +97,7 @@
         DebugLog(@"create cache directory failed, error = %@", error);
     } else {
         
+        DebugLog(@"path = %@",path);
         [self addDoNotBackupAttribute:path];
     }
 }
