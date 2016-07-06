@@ -15,14 +15,14 @@
 #### 2016.06.24  Version 1.0(发布)
 
 ## 使用方法:
-### 1.(同步)写入
+### 1.(同步)写入/更新
 ```objc
 //将数据(同步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
 [XHNetworkCache saveJsonResponseToCacheFile:responseObject andURL:URLString];
 
 ```
-### 2.(异步)写入
+### 2.(异步)写入/更新
 ```objc
 //将数据(异步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
