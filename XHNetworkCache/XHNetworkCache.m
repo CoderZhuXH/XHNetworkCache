@@ -135,7 +135,9 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *path = [self cachePath];
-    return [fileManager removeItemAtPath:path error:nil];
+    BOOL result = [fileManager removeItemAtPath:path error:nil];
+    [self checkDirectory:[self cachePath]];
+    return result;
 }
 + (float)cacheSize{
     NSString *directoryPath = [self cachePath];

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="textLab" destination="EDf-t6-KW2" id="oia-D2-dtU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="aOz-Ix-e7g"/>
             </connections>
         </placeholder>
@@ -15,10 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请看控制台打印" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDf-t6-KW2">
-                    <rect key="frame" x="0.0" y="380" width="320" height="45"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDf-t6-KW2">
+                    <rect key="frame" x="0.0" y="435" width="320" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="hGq-kT-ZeB"/>
+                        <constraint firstAttribute="height" constant="60" id="hGq-kT-ZeB"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,21 +69,6 @@
                         <action selector="getCache:" destination="-1" eventType="touchUpInside" id="vQH-21-rlE"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PX0-En-m7V">
-                    <rect key="frame" x="0.0" y="320" width="320" height="40"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="7Rx-Hb-Go2"/>
-                        <constraint firstAttribute="height" constant="40" id="LuP-qb-iFG"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="清除缓存">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="clearCache:" destination="-1" eventType="touchUpInside" id="Qck-pn-wBd"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzD-Yt-qDp">
                     <rect key="frame" x="0.0" y="265" width="320" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,6 +84,41 @@
                         <action selector="cacheSize:" destination="-1" eventType="touchUpInside" id="5Gx-RU-YJ0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xym-SB-Y15">
+                    <rect key="frame" x="0.0" y="320" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="hBq-5J-UYh"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="nyY-nd-SWP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="获取缓存路径">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cachePath:" destination="-1" eventType="touchUpInside" id="GrI-AE-YgY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PX0-En-m7V">
+                    <rect key="frame" x="0.0" y="375" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="7Rx-Hb-Go2"/>
+                        <constraint firstAttribute="height" constant="40" id="LuP-qb-iFG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="清除缓存">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="7Rx-Hb-Go2"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="clearCache:" destination="-1" eventType="touchUpInside" id="Qck-pn-wBd"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -106,6 +127,7 @@
                 <constraint firstAttribute="bottom" secondItem="EDf-t6-KW2" secondAttribute="bottom" id="47h-4y-tjt"/>
                 <constraint firstItem="pzD-Yt-qDp" firstAttribute="top" secondItem="PX0-En-m7V" secondAttribute="bottom" constant="15" id="CGg-3p-Wjg"/>
                 <constraint firstAttribute="trailing" secondItem="PX0-En-m7V" secondAttribute="trailing" id="G1r-37-juF"/>
+                <constraint firstAttribute="trailing" secondItem="Xym-SB-Y15" secondAttribute="trailing" id="Jva-WM-4Qs"/>
                 <constraint firstItem="6WN-m7-3Qv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QRO-aI-3lg"/>
                 <constraint firstAttribute="bottom" secondItem="EDf-t6-KW2" secondAttribute="bottom" constant="10" id="R0X-dK-VSn"/>
                 <constraint firstItem="9hx-4h-CnK" firstAttribute="top" secondItem="TWl-ZF-UAc" secondAttribute="bottom" constant="15" id="RWR-r9-49m"/>
@@ -114,20 +136,24 @@
                 <constraint firstItem="pzD-Yt-qDp" firstAttribute="top" secondItem="9hx-4h-CnK" secondAttribute="bottom" constant="15" id="a8h-Ng-ohF"/>
                 <constraint firstItem="PX0-En-m7V" firstAttribute="top" secondItem="pzD-Yt-qDp" secondAttribute="bottom" constant="15" id="bjn-WE-IIp"/>
                 <constraint firstItem="PX0-En-m7V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cDN-AI-w7I"/>
+                <constraint firstItem="Xym-SB-Y15" firstAttribute="top" secondItem="pzD-Yt-qDp" secondAttribute="bottom" constant="15" id="eLz-Lb-lM9"/>
                 <constraint firstItem="6WN-m7-3Qv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="ftW-ep-wv5"/>
                 <constraint firstItem="pzD-Yt-qDp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gKF-0F-i5j"/>
                 <constraint firstAttribute="trailing" secondItem="TWl-ZF-UAc" secondAttribute="trailing" id="ip7-px-E5o"/>
                 <constraint firstItem="TWl-ZF-UAc" firstAttribute="top" secondItem="6WN-m7-3Qv" secondAttribute="bottom" constant="15" id="mn1-KD-dTs"/>
                 <constraint firstAttribute="trailing" secondItem="6WN-m7-3Qv" secondAttribute="trailing" id="oMb-9S-GGQ"/>
+                <constraint firstItem="PX0-En-m7V" firstAttribute="top" secondItem="Xym-SB-Y15" secondAttribute="bottom" constant="15" id="pEG-WP-vC6"/>
                 <constraint firstItem="PX0-En-m7V" firstAttribute="top" secondItem="9hx-4h-CnK" secondAttribute="bottom" constant="15" id="pOi-If-Rpj"/>
                 <constraint firstItem="EDf-t6-KW2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pQd-dB-r4G"/>
                 <constraint firstAttribute="trailing" secondItem="EDf-t6-KW2" secondAttribute="trailing" id="qA1-3K-OtI"/>
                 <constraint firstItem="EDf-t6-KW2" firstAttribute="top" secondItem="PX0-En-m7V" secondAttribute="bottom" constant="20" id="tzk-4R-d7Y"/>
+                <constraint firstItem="Xym-SB-Y15" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vbn-rE-Z4L"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="CGg-3p-Wjg"/>
+                    <exclude reference="bjn-WE-IIp"/>
                     <exclude reference="pOi-If-Rpj"/>
                     <exclude reference="47h-4y-tjt"/>
                     <exclude reference="R0X-dK-VSn"/>

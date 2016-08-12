@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B62620B1D263FCB00A970EB /* XHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B62620A1D263FCB00A970EB /* XHNetwork.m */; };
 		4BE4D6751D1E296300CC4624 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6741D1E296300CC4624 /* main.m */; };
 		4BE4D6781D1E296300CC4624 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6771D1E296300CC4624 /* AppDelegate.m */; };
 		4BE4D67A1D1E296300CC4624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BE4D6791D1E296300CC4624 /* Assets.xcassets */; };
@@ -35,8 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B6262091D263FCB00A970EB /* XHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHNetwork.h; sourceTree = "<group>"; };
-		4B62620A1D263FCB00A970EB /* XHNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHNetwork.m; sourceTree = "<group>"; };
 		4BE4D6701D1E296300CC4624 /* XHNetworkCacheExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHNetworkCacheExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE4D6741D1E296300CC4624 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BE4D6761D1E296300CC4624 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,8 +115,6 @@
 		4BE4D6721D1E296300CC4624 /* XHNetworkCacheExample */ = {
 			isa = PBXGroup;
 			children = (
-				4B6262091D263FCB00A970EB /* XHNetwork.h */,
-				4B62620A1D263FCB00A970EB /* XHNetwork.m */,
 				4BE4D6761D1E296300CC4624 /* AppDelegate.h */,
 				4BE4D6771D1E296300CC4624 /* AppDelegate.m */,
 				4BE4D6881D1E2BCF00CC4624 /* ViewController.h */,
@@ -283,7 +278,6 @@
 				4BE4D6BE1D1E2CC800CC4624 /* UIImageView+AFNetworking.m in Sources */,
 				4BE4D6B51D1E2CC800CC4624 /* AFURLResponseSerialization.m in Sources */,
 				4BE4D6781D1E296300CC4624 /* AppDelegate.m in Sources */,
-				4B62620B1D263FCB00A970EB /* XHNetwork.m in Sources */,
 				4BE4D6BF1D1E2CC800CC4624 /* UIProgressView+AFNetworking.m in Sources */,
 				4BE4D6BA1D1E2CC800CC4624 /* AFImageDownloader.m in Sources */,
 				4BE4D6B91D1E2CC800CC4624 /* AFAutoPurgingImageCache.m in Sources */,

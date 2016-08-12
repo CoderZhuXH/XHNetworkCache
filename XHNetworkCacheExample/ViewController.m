@@ -8,11 +8,19 @@
 
 #import "ViewController.h"
 #import "XHNetworkCache.h"
-#import "XHNetwork.h"
-
-#define URLString @"http://www.qinto.com/wap/index.php?ctl=article_cate&act=api_app_getarticle_cate&num=1&p=1"
 
 @interface ViewController ()
+
+/**
+ *  模拟数据请求URL
+ */
+@property (nonatomic, copy) NSString *URLString;
+/**
+ *  模拟服务器请求数据
+ */
+@property (nonatomic, strong) NSDictionary *responseObject;
+
+@property (weak, nonatomic) IBOutlet UILabel *textLab;
 
 @end
 
@@ -22,53 +30,67 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"XHNetworkCache";
+    self.textLab.text = [NSString stringWithFormat:@"请看控制台打印\n 详情见:Github:https://github.com/CoderZhuXH/XHNetworkCache"];
+    
+    //数据模拟
+    self.URLString = @"http://www.returnoc.com";
+    self.responseObject = @{
+                           @"time" : @"1444524177",
+                           @"isauth" : @"0",
+                           @"openid" : @"1728484287",
+                           @"sex" : @"男",
+                           @"city" : @"",
+                           @"cover" : @"http://tp4.sinaimg.cn/1728484287/180/5736236738/1",
+                           @"logintime" : @"1445267749",
+                           @"name" : @"",
+                           @"group" : @"3",
+                           @"loginhit" : @"4",
+                           @"id" : @"234328",
+                           @"phone" : @"",
+                           @"nicheng" : @"辉Allen",
+                           @"apptoken" : @"bae4c30113151270174f724f450779bc",
+                           @"face" : @"http://tp4.sinaimg.cn/1728484287/180/5736236738/1",
+                           @"desc" : @"比你牛B的人都在努力,你还有什么理由偷懒!",
+                           @"infoverify" : @"1"
+                           };
+    
+
 }
+#pragma mark-Action
 /**
  *  (同步)写入/更新缓存数据
  */
 - (IBAction)save:(UIButton *)sender {
 
-    [XHNetwork POST:URLString parameters:nil success:^(id responseObject) {
-        
-        NSDictionary *response_dic = responseObject;
-        NSInteger status = [response_dic[@"status"] integerValue];
-        //判断数据合法性(此处根据自己服务器返回状态码,进行判断)
-        if(status==200)
-        {
-            //(同步)写入/更新缓存数据
-            //参数1:JSON数据,参数2:数据请求URL
-            BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:response_dic andURL:URLString];
-            if(result) NSLog(@"(同步)写入/更新缓存数据 成功");
-            
-            //TO DO...
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+    //(同步)写入/更新缓存数据
+    //参数1:JSON数据,参数2:数据请求URL
+    BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:self.responseObject andURL:self.URLString];
+    if(result)
+    {
+        NSLog(@"(同步)写入/更新缓存数据 成功");
+    }
+    else
+    {
+         NSLog(@"(同步)写入/更新缓存数据 失败");
+    }
 }
 /**
  *  (异步)写入/更新缓存数据
  */
 - (IBAction)save_async:(id)sender {
 
-    [XHNetwork POST:URLString parameters:nil success:^(id responseObject) {
+    //(异步步)写入/更新缓存数据
+    //参数1:JSON数据,参数2:数据请求URL
+    [XHNetworkCache save_asyncJsonResponseToCacheFile:self.responseObject andURL:self.URLString completed:^(BOOL result) {
         
-        NSDictionary *response_dic = responseObject;
-        NSInteger status = [response_dic[@"status"] integerValue];
-        //判断数据合法性(此处根据自己服务器返回状态码,进行判断)
-        if(status==200)
+        if(result)
         {
-            //(异步步)写入/更新缓存数据
-            //参数1:JSON数据,参数2:数据请求URL
-            [XHNetworkCache save_asyncJsonResponseToCacheFile:response_dic andURL:URLString completed:^(BOOL result) {
-               
-                if(result)  NSLog(@"(异步)写入/更新缓存数据 成功");
-                
-            }];
-            
-            //TO DO...
+            NSLog(@"(异步)写入/更新缓存数据 成功");
         }
-    } failure:^(NSError *error) {
+        else
+        {
+            NSLog(@"(异步)写入/更新缓存数据 失败");
+        }
         
     }];
 }
@@ -79,7 +101,7 @@
 
     //获取缓存数据
     //参数:数据请求URL
-    id cacheJson = [XHNetworkCache cacheJsonWithURL:URLString];
+    id cacheJson = [XHNetworkCache cacheJsonWithURL:self.URLString];
     NSLog(@"缓存数据:%@",cacheJson);
 }
 /**
@@ -89,6 +111,15 @@
     
     float size = [XHNetworkCache cacheSize];
     NSLog(@"缓存大小:%f M",size);
+}
+/**
+ *  缓存路径
+ */
+- (IBAction)cachePath:(id)sender {
+
+    NSString *path = [XHNetworkCache cachePath];
+    
+    NSLog(@"path=%@",path);
 }
 /**
  *  清除缓存

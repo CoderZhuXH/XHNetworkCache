@@ -40,6 +40,13 @@ typedef void(^XHNetworkCacheCompletionBlock)(BOOL result);
  */
 +(id )cacheJsonWithURL:(NSString *)URL;
 
+/**
+ *  获取缓存路径
+ *
+ *  @return 缓存路径
+ */
++(NSString *)cachePath;
+
 
 /**
  *  清除所有缓存

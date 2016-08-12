@@ -1,9 +1,13 @@
 # XHNetworkCache
-* 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
+#### 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
+####[Swift版本请戳这里>>>](https://github.com/CoderZhuXH/XHNetworkCache-Swift)
 
 ###技术交流群(群号:537476189)
 
 ### 版本记录(持续更新)
+
+#### 2016.08.12  Version 1.2.1(更新)
+* 1.增加获取缓存路径接口<br>
 
 #### 2016.07.06  Version 1.2(更新)
 * 1.增加异步写入/更新缓存接口<br>
@@ -19,18 +23,33 @@
 ```objc
 //将数据(同步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
-[XHNetworkCache saveJsonResponseToCacheFile:responseObject andURL:URLString];
+  BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:self.responseObject andURL:self.URLString];
+  if(result)
+  {
+        NSLog(@"(同步)写入/更新缓存数据 成功");
+  }
+  else
+  {
+        NSLog(@"(同步)写入/更新缓存数据 失败");
+  }
 
 ```
 ### 2.(异步)写入/更新
 ```objc
 //将数据(异步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
-[XHNetworkCache save_asyncJsonResponseToCacheFile:responseObject andURL:URLString completed:^(BOOL result) {
-               
-  if(result)  NSLog(@"(异步)写入/更新缓存数据 成功");
-               
- }];
+[XHNetworkCache save_asyncJsonResponseToCacheFile:self.responseObject andURL:self.URLString completed:^(BOOL result) {
+        
+if(result)
+{
+    NSLog(@"(异步)写入/更新缓存数据 成功");
+}
+else
+{
+    NSLog(@"(异步)写入/更新缓存数据 失败");
+}
+        
+}];
 
 ```
 ### 3.获取缓存数据
@@ -39,14 +58,19 @@
 id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 
 ```
-### 4.清除缓存
+### 4.获取缓存路径
+```objc
+//获取缓存路径
+ NSString *path = [XHNetworkCache cachePath];
+
+### 5.清除缓存
 ```objc
 //清除缓存
 [XHNetworkCache clearCache];
 
 ```
 
-### 5.获取缓存总大小(M)
+### 6.获取缓存总大小(M)
 ```objc
 //获取缓存总大小(M)
 float cacheSize = [XHNetworkCache cacheSize];
