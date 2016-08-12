@@ -63,6 +63,7 @@ id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 //获取缓存路径
  NSString *path = [XHNetworkCache cachePath];
 
+ ```
 ### 5.清除缓存
 ```objc
 //清除缓存
@@ -76,16 +77,16 @@ id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 float cacheSize = [XHNetworkCache cacheSize];
 ```
 ##  安装
-### 手动添加:<br>
+### 1.手动添加:<br>
 *   1.将 XHNetworkCache 文件夹添加到工程目录中<br>
 *   2.导入 XHNetworkCache.h
 
-## CocoaPods:<br>
+### 2.CocoaPods:<br>
 *   1.在 Podfile 中添加 pod 'XHNetworkCache'<br>
 *   2.执行 pod install 或 pod update<br>
 *   3.导入 XHNetworkCache.h
 
-## Tips
+### 3.Tips
 *	如果你发现你执行pod install后,导入的不是最新的,请删除Podfile.lock文件,在执行一次 pod install
 
 ##  系统要求
