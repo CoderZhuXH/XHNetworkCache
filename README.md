@@ -1,6 +1,6 @@
 # XHNetworkCache
 #### 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
-####[Swift版本请戳这里>>>](https://github.com/CoderZhuXH/XHNetworkCache-Swift)
+####[Swift版本请戳这里>>>](https://github.com/CoderZhuXH/XHNetworkCacheSwift)
 
 ###技术交流群(群号:537476189)
 
