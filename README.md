@@ -1,6 +1,6 @@
 # XHNetworkCache
 #### 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
-####[Swift版本请戳这里>>>](https://github.com/CoderZhuXH/XHNetworkCacheSwift)
+#### Swift版本请戳这里>>> https://github.com/CoderZhuXH/XHNetworkCacheSwift
 
 ###技术交流群(群号:537476189)
 
@@ -79,7 +79,8 @@ float cacheSize = [XHNetworkCache cacheSize];
 *   3.导入 XHNetworkCache.h
 
 ### 3.Tips
-*	如果你发现你执行pod install后,导入的不是最新的,请删除Podfile.lock文件,在执行一次 pod install
+* 1.如果发现pod search XHNetworkCache 搜索出来的不是最新版本，需要在终端执行cd desktop退回到desktop，然后执行pod setup命令更新本地spec缓存（需要几分钟），然后再搜索就可以了
+* 2.如果你发现你执行pod install后,导入的不是最新版本,请删除Podfile.lock文件,在执行一次 pod install
 
 ##  系统要求
 *   该项目最低支持 iOS 7.0 和 Xcode 7.0
