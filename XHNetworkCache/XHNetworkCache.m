@@ -51,8 +51,9 @@
 + (NSString *)cacheFilePathWithURL:(NSString *)URL {
     
     NSString *path = [self cachePath];
-    [self checkDirectory:path];//check路径
-    //文件名
+    //checkDirectory
+    [self checkDirectory:path];
+    //fileName
     NSString *cacheFileNameString = [NSString stringWithFormat:@"URL:%@ AppVersion:%@",URL,[self appVersionString]];
     NSString *cacheFileName = [self md5StringFromString:cacheFileNameString];
     path = [path stringByAppendingPathComponent:cacheFileName];
@@ -61,7 +62,13 @@
 +(NSData *)jsonToData:(id)jsonResponse
 {
     if(jsonResponse==nil) return nil;
-    return [NSJSONSerialization dataWithJSONObject:jsonResponse options:NSJSONWritingPrettyPrinted error:nil];
+    NSError *error;
+    NSData *data =[NSJSONSerialization dataWithJSONObject:jsonResponse options:NSJSONWritingPrettyPrinted error:&error];
+    if (error) {
+        DebugLog(@"ERROR, faild to get json data");
+        return nil;
+    }
+    return data;
 }
 +(id)dataToJson:(NSData *)data
 {
@@ -81,6 +88,7 @@
     if (![fileManager fileExistsAtPath:path isDirectory:&isDir]) {
         [self createBaseDirectoryAtPath:path];
     } else {
+        
         if (!isDir) {
             NSError *error = nil;
             [fileManager removeItemAtPath:path error:&error];
