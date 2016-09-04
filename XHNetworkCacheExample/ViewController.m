@@ -110,7 +110,12 @@
 - (IBAction)cacheSize:(id)sender {
     
     float size = [XHNetworkCache cacheSize];
-    NSLog(@"缓存大小:%f M",size);
+    NSLog(@"type1,缓存大小:%fM",size);
+    
+    //或者(以..kb/..M)形式获取
+    NSString *sizeFormat = [XHNetworkCache cacheSizeFormat];
+    NSLog(@"type2,缓存大小:%@",sizeFormat);
+
 }
 /**
  *  缓存路径
@@ -129,8 +134,6 @@
     BOOL result = [XHNetworkCache clearCache];
     if(result) NSLog(@"缓存清除成功");
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

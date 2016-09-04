@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "XHNetworkCache"
-  s.version      = "1.2.2"
-  s.summary      = "一行代码将请求数据写入磁盘缓存"
+  s.version      = "1.2.3"
+  s.summary      = "一行代码将网络数据持久化 - 支持数据同步/异步写入及更新、缓存数据读取、获取缓存数据大小、缓存数据清除"
   s.homepage     = "https://github.com/CoderZhuXH/XHNetworkCache"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.authors      = { "Zhu Xiaohui" => "977950862@qq.com"}

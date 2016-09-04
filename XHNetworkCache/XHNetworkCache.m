@@ -171,4 +171,21 @@
     }
     return total/(1024.0*1024.0);
 }
++(NSString *)cacheSizeFormat
+{
+    NSString *sizeUnitString;
+    float size = [self cacheSize];
+    if(size < 1)
+    {
+        size *= 1024.0;//小于1M转化为kb
+        sizeUnitString = [NSString stringWithFormat:@"%.1fkb",size];
+    }
+    else{
+    
+        sizeUnitString = [NSString stringWithFormat:@"%.1fM",size];
+    }
+
+    return sizeUnitString;
+}
+
 @end

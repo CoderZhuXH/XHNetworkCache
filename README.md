@@ -5,6 +5,7 @@
 ###技术交流群(群号:537476189)
 
 ### 更新记录:
+*    2016.09.04 -- v1.2.3 -->增加+(NSString *)cacheSizeFormat方法
 *    2016.08.29 -- v1.2.2 -->优化<br>
 *    2016.08.12 -- v1.2.1 -->增加获取缓存路径接口<br>
 *    2016.07.06 -- v1.2   -->增加异步写入/更新缓存接口<br>
@@ -66,8 +67,10 @@ id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 
 ### 6.获取缓存总大小(M)
 ```objc
-//获取缓存总大小(M)
+//获取缓存大小(M)
 float cacheSize = [XHNetworkCache cacheSize];
+//或者(以..kb/..M)形式获取
+NSString *cacheSizeFormat = [XHNetworkCache cacheSizeFormat];
 ```
 ##  安装
 ### 1.手动添加:<br>

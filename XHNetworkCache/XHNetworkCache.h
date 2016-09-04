@@ -49,15 +49,22 @@ typedef void(^XHNetworkCacheCompletionBlock)(BOOL result);
 
 
 /**
- *  清除所有缓存
+ *  清除缓存
  */
 +(BOOL)clearCache;
 
 /**
- *  获取缓存总大小(单位:M)
+ *  获取缓存大小(单位:M)
  *
  *  @return 缓存大小
  */
 + (float)cacheSize;
+
+/**
+ *  获取缓存大小,(以..kb/..M)形式获取
+ *  小于1M,以kb形式返回,大于1M,以M形式返回
+ *  @return 缓存大小+单位
+ */
++(NSString *)cacheSizeFormat;
 
 @end
