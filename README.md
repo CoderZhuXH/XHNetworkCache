@@ -1,8 +1,19 @@
 # XHNetworkCache
 #### 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
+
+[![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg?maxAge=2592000)](https://github.com/CoderZhuXH/XHNetworkCache)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/CoderZhuXH/XHNetworkCache)
+[![Version Status](https://img.shields.io/cocoapods/v/XHNetworkCache.svg?style=flat)](http://cocoadocs.org/docsets/XHNetworkCache)
+[![Support](https://img.shields.io/badge/support-iOS%207%2B-brightgreen.svg)](https://github.com/CoderZhuXH/XHNetworkCache)
+[![Pod Platform](https://img.shields.io/cocoapods/p/XHNetworkCache.svg?style=flat)](http://cocoadocs.org/docsets/XHNetworkCache)
+[![Pod License](https://img.shields.io/cocoapods/l/XHNetworkCache.svg?style=flat)](https://github.com/CoderZhuXH/XHNetworkCache/blob/master/LICENSE)
+
+==============
+
 #### Swift版本请戳这里>>> https://github.com/CoderZhuXH/XHNetworkCacheSwift
 
 ###技术交流群(群号:537476189)
+
 
 ### 更新记录:
 *    2016.09.04 -- v1.2.3 -->增加+(NSString *)cacheSizeFormat方法
