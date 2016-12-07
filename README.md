@@ -1,5 +1,5 @@
 # XHNetworkCache
-#### 一行代码将请求数据写入磁盘缓存-支持CocoaPods<br>
+#### 一行代码持久化网络数据<br>
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg?maxAge=2592000)](https://github.com/CoderZhuXH/XHNetworkCache)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/CoderZhuXH/XHNetworkCache)
