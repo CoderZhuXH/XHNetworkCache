@@ -1,0 +1,23 @@
+{
+    "code":200,
+    "msg":"success",
+    "data":{
+        "time" : "1444524177",
+        "isauth" : "0",
+        "openid" : "1728484287",
+        "sex" : "男",
+        "city" : "",
+        "cover" : "http://tp4.sinaimg.cn/1728484287/180/5736236738/1",
+        "logintime" : "1445267749",
+        "name" : "",
+        "group" : "3",
+        "loginhit" : "4",
+        "id" : "234328",
+        "phone" : "",
+        "nicheng" : "辉Allen",
+        "apptoken" : "bae4c30113151270174f724f450779bc",
+        "face" : "http://tp4.sinaimg.cn/1728484287/180/5736236738/1",
+        "desc" : "比你牛B的人都在努力,你还有什么理由偷懒!",
+        "infoverify" : "1"
+    }
+}

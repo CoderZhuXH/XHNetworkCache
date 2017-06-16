@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CABAFB91EF3AC7F0091B659 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CABAFB81EF3AC7F0091B659 /* Network.m */; };
+		0CABAFBD1EF3AD700091B659 /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CABAFBC1EF3AD700091B659 /* Test.json */; };
 		4BE4D6751D1E296300CC4624 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6741D1E296300CC4624 /* main.m */; };
 		4BE4D6781D1E296300CC4624 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6771D1E296300CC4624 /* AppDelegate.m */; };
 		4BE4D67A1D1E296300CC4624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BE4D6791D1E296300CC4624 /* Assets.xcassets */; };
@@ -17,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CABAFB71EF3AC7F0091B659 /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		0CABAFB81EF3AC7F0091B659 /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		0CABAFBC1EF3AD700091B659 /* Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Test.json; sourceTree = "<group>"; };
 		4BE4D6701D1E296300CC4624 /* XHNetworkCacheExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHNetworkCacheExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE4D6741D1E296300CC4624 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BE4D6761D1E296300CC4624 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CABAFB61EF3AC7F0091B659 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0CABAFBC1EF3AD700091B659 /* Test.json */,
+				0CABAFB71EF3AC7F0091B659 /* Network.h */,
+				0CABAFB81EF3AC7F0091B659 /* Network.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		4BE4D6671D1E296300CC4624 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +77,7 @@
 		4BE4D6721D1E296300CC4624 /* XHNetworkCacheExample */ = {
 			isa = PBXGroup;
 			children = (
+				0CABAFB61EF3AC7F0091B659 /* Network */,
 				4BE4D6761D1E296300CC4624 /* AppDelegate.h */,
 				4BE4D6771D1E296300CC4624 /* AppDelegate.m */,
 				4BE4D6881D1E2BCF00CC4624 /* ViewController.h */,
@@ -149,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CABAFBD1EF3AD700091B659 /* Test.json in Resources */,
 				4BE4D67A1D1E296300CC4624 /* Assets.xcassets in Resources */,
 				4BE4D6C31D1E31B900CC4624 /* ViewController.xib in Resources */,
 				4BE4D67D1D1E296300CC4624 /* LaunchScreen.storyboard in Resources */,
@@ -163,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BE4D6781D1E296300CC4624 /* AppDelegate.m in Sources */,
+				0CABAFB91EF3AC7F0091B659 /* Network.m in Sources */,
 				4BE4D6871D1E29A100CC4624 /* XHNetworkCache.m in Sources */,
 				4BE4D68A1D1E2BCF00CC4624 /* ViewController.m in Sources */,
 				4BE4D6751D1E296300CC4624 /* main.m in Sources */,
@@ -271,7 +289,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = XHNetworkCacheExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = qiantou.XHNetworkCacheExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.it7090.XHNetworkCacheExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -282,7 +300,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = XHNetworkCacheExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = qiantou.XHNetworkCacheExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.it7090.XHNetworkCacheExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

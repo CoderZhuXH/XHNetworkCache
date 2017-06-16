@@ -16,6 +16,7 @@
 
 
 ### 更新记录:
+*	  2017.06.16 -- v1.3.0 -->缓存及获取缓存接口增加请求参数(可选)
 *    2016.09.04 -- v1.2.3 -->增加+(NSString *)cacheSizeFormat方法
 *    2016.08.29 -- v1.2.2 -->优化<br>
 *    2016.08.12 -- v1.2.1 -->增加获取缓存路径接口<br>
@@ -26,41 +27,41 @@
 ## 使用方法:
 ### 1.(同步)写入/更新
 ```objc
-//将数据(同步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
+//将数据(同步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL,参数3:数据请求参数(没有传nil)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
-  BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:responseObject andURL:URLString];
-  if(result)
-  {
+    BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:self.responseObject andURL:self.URL params:self.params];
+    if(result)
+    {
         NSLog(@"(同步)写入/更新缓存数据 成功");
-  }
-  else
-  {
-        NSLog(@"(同步)写入/更新缓存数据 失败");
-  }
+    }
+    else
+    {
+         NSLog(@"(同步)写入/更新缓存数据 失败");
+    }
 
 ```
 ### 2.(异步)写入/更新
 ```objc
-//将数据(异步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL)
+//将数据(异步)写入磁盘缓存(参数1:服务器返回的JSON数据, 参数2:数据请求URL,参数3:数据请求参数(没有传nil)
 //[按APP版本号缓存,不同版本APP,同一接口缓存数据互不干扰]
-[XHNetworkCache save_asyncJsonResponseToCacheFile:responseObject andURL:URLString completed:^(BOOL result) {
+    [XHNetworkCache save_asyncJsonResponseToCacheFile:self.responseObject andURL:self.URL params:self.params completed:^(BOOL result) {
         
-if(result)
-{
-    NSLog(@"(异步)写入/更新缓存数据 成功");
-}
-else
-{
-    NSLog(@"(异步)写入/更新缓存数据 失败");
-}
+        if(result)
+        {
+            NSLog(@"(异步)写入/更新缓存数据 成功");
+        }
+        else
+        {
+            NSLog(@"(异步)写入/更新缓存数据 失败");
+        }
         
-}];
+    }];
 
 ```
 ### 3.获取缓存数据
 ```objc
 //获取缓存数据(参数:请求URL,返回:JSON数据)
-id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
+id JsonCache = [XHNetworkCache cacheJsonWithURL:self.URL params:self.params];
 
 ```
 ### 4.获取缓存路径
@@ -68,7 +69,7 @@ id JsonCache = [XHNetworkCache cacheJsonWithURL:URLString];
 //获取缓存路径
  NSString *path = [XHNetworkCache cachePath];
 
- ```
+```
 ### 5.清除缓存
 ```objc
 //清除缓存

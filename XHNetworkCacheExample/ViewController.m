@@ -2,23 +2,30 @@
 //  ViewController.m
 //  XHNetworkCacheExample
 //
-//  Created by xiaohui on 16/6/25.
-//  Copyright © 2016年 qiantou. All rights reserved.
+//  Created by  zhuxiaohui on 16/6/25.
+//  Copyright © 2016年 it7090. All rights reserved.
 //  代码地址:https://github.com/CoderZhuXH/XHNetworkCache
 
 #import "ViewController.h"
 #import "XHNetworkCache.h"
+#import "Network.h"
 
 @interface ViewController ()
 
 /**
  *  模拟数据请求URL
  */
-@property (nonatomic, copy) NSString *URLString;
+@property (nonatomic, copy) NSString *URL;
+
 /**
- *  模拟服务器请求数据
+ 请求参数
  */
-@property (nonatomic, strong) NSDictionary *responseObject;
+@property(nonatomic,strong)NSDictionary *params;
+
+/**
+ *  服务器返回数据
+ */
+@property (nonatomic, strong) id responseObject;
 
 @property (weak, nonatomic) IBOutlet UILabel *textLab;
 
@@ -32,28 +39,15 @@
     self.navigationItem.title = @"XHNetworkCache";
     self.textLab.text = [NSString stringWithFormat:@"请看控制台打印\n 详情见:Github:https://github.com/CoderZhuXH/XHNetworkCache"];
     
-    //数据模拟
-    self.URLString = @"http://www.returnoc.com";
-    self.responseObject = @{
-                           @"time" : @"1444524177",
-                           @"isauth" : @"0",
-                           @"openid" : @"1728484287",
-                           @"sex" : @"男",
-                           @"city" : @"",
-                           @"cover" : @"http://tp4.sinaimg.cn/1728484287/180/5736236738/1",
-                           @"logintime" : @"1445267749",
-                           @"name" : @"",
-                           @"group" : @"3",
-                           @"loginhit" : @"4",
-                           @"id" : @"234328",
-                           @"phone" : @"",
-                           @"nicheng" : @"辉Allen",
-                           @"apptoken" : @"bae4c30113151270174f724f450779bc",
-                           @"face" : @"http://tp4.sinaimg.cn/1728484287/180/5736236738/1",
-                           @"desc" : @"比你牛B的人都在努力,你还有什么理由偷懒!",
-                           @"infoverify" : @"1"
-                           };
-    
+    self.URL = @"http://www.it7090.com/Api/getUserInfo";
+    self.params =@{@"userId":@"10001"};
+    [Network getWithURL:self.URL params:self.params success:^(id response) {
+        
+        self.responseObject = response;
+        
+    } failure:^(NSError *error) {
+        
+    }];
 
 }
 #pragma mark-Action
@@ -63,8 +57,8 @@
 - (IBAction)save:(UIButton *)sender {
 
     //(同步)写入/更新缓存数据
-    //参数1:JSON数据,参数2:数据请求URL
-    BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:self.responseObject andURL:self.URLString];
+    //参数1:JSON数据,参数2:数据请求URL,参数3:数据请求参数(没有传nil)
+    BOOL result = [XHNetworkCache saveJsonResponseToCacheFile:self.responseObject andURL:self.URL params:self.params];
     if(result)
     {
         NSLog(@"(同步)写入/更新缓存数据 成功");
@@ -80,8 +74,8 @@
 - (IBAction)save_async:(id)sender {
 
     //(异步步)写入/更新缓存数据
-    //参数1:JSON数据,参数2:数据请求URL
-    [XHNetworkCache save_asyncJsonResponseToCacheFile:self.responseObject andURL:self.URLString completed:^(BOOL result) {
+    //参数1:JSON数据,参数2:数据请求URL,参数3:数据请求参数(没有传nil)
+    [XHNetworkCache save_asyncJsonResponseToCacheFile:self.responseObject andURL:self.URL params:self.params completed:^(BOOL result) {
         
         if(result)
         {
@@ -100,8 +94,8 @@
 - (IBAction)getCache:(id)sender{
 
     //获取缓存数据
-    //参数:数据请求URL
-    id cacheJson = [XHNetworkCache cacheJsonWithURL:self.URLString];
+    //参数1:数据请求URL,参数2:数据请求参数(没有传nil)
+    id cacheJson = [XHNetworkCache cacheJsonWithURL:self.URL params:self.params];
     NSLog(@"缓存数据:%@",cacheJson);
 }
 /**
