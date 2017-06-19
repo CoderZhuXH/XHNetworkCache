@@ -159,7 +159,7 @@
 {
     if(URL== nil || URL.length == 0) return nil;
     NSString *fileName = [NSString stringWithFormat:@"URL:%@%@ AppVersion:%@",URL,[self paramsStringWithParams:params],[self appVersionString]];
-    NSLog(@"flieName=%@",fileName);
+    //DebugLog(@"flieName=%@",fileName);
     return  [self md5StringFromString:fileName];
 }
 +(NSString *)paramsStringWithParams:(NSDictionary *)params
