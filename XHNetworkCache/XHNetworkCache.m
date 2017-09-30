@@ -31,8 +31,7 @@
 
 +(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(nullable XHNetworkCacheCompletionBlock)completedBlock;{
 
-    [self save_asyncJsonResponseToCacheFile:jsonResponse andURL:URL completed:completedBlock];
-    
+    [self save_asyncJsonResponseToCacheFile:jsonResponse andURL:URL params:nil completed:completedBlock];
 }
 
 +(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL params:(nullable NSDictionary *)params completed:(nullable XHNetworkCacheCompletionBlock)completedBlock{
