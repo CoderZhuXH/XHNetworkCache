@@ -13,9 +13,9 @@
 		4BE4D6781D1E296300CC4624 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6771D1E296300CC4624 /* AppDelegate.m */; };
 		4BE4D67A1D1E296300CC4624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BE4D6791D1E296300CC4624 /* Assets.xcassets */; };
 		4BE4D67D1D1E296300CC4624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BE4D67B1D1E296300CC4624 /* LaunchScreen.storyboard */; };
-		4BE4D6871D1E29A100CC4624 /* XHNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6861D1E29A100CC4624 /* XHNetworkCache.m */; };
 		4BE4D68A1D1E2BCF00CC4624 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4D6891D1E2BCF00CC4624 /* ViewController.m */; };
 		4BE4D6C31D1E31B900CC4624 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE4D6C21D1E31B900CC4624 /* ViewController.xib */; };
+		6023A91D1FB53F7100712C1B /* XHNetworkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6023A91C1FB53F7100712C1B /* XHNetworkCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +29,11 @@
 		4BE4D6791D1E296300CC4624 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BE4D67C1D1E296300CC4624 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BE4D67E1D1E296300CC4624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BE4D6851D1E29A100CC4624 /* XHNetworkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHNetworkCache.h; sourceTree = "<group>"; };
-		4BE4D6861D1E29A100CC4624 /* XHNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHNetworkCache.m; sourceTree = "<group>"; };
 		4BE4D6881D1E2BCF00CC4624 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4BE4D6891D1E2BCF00CC4624 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4BE4D6C21D1E31B900CC4624 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		6023A91B1FB53F7100712C1B /* XHNetworkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHNetworkCache.h; sourceTree = "<group>"; };
+		6023A91C1FB53F7100712C1B /* XHNetworkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHNetworkCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE4D6721D1E296300CC4624 /* XHNetworkCacheExample */,
-				4BE4D6841D1E297C00CC4624 /* XHNetworkCache */,
+				6023A91A1FB53F7100712C1B /* XHNetworkCache */,
 				4BE4D6711D1E296300CC4624 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,13 +99,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		4BE4D6841D1E297C00CC4624 /* XHNetworkCache */ = {
+		6023A91A1FB53F7100712C1B /* XHNetworkCache */ = {
 			isa = PBXGroup;
 			children = (
-				4BE4D6851D1E29A100CC4624 /* XHNetworkCache.h */,
-				4BE4D6861D1E29A100CC4624 /* XHNetworkCache.m */,
+				6023A91B1FB53F7100712C1B /* XHNetworkCache.h */,
+				6023A91C1FB53F7100712C1B /* XHNetworkCache.m */,
 			);
-			path = XHNetworkCache;
+			name = XHNetworkCache;
+			path = ../XHNetworkCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,7 +182,7 @@
 			files = (
 				4BE4D6781D1E296300CC4624 /* AppDelegate.m in Sources */,
 				0CABAFB91EF3AC7F0091B659 /* Network.m in Sources */,
-				4BE4D6871D1E29A100CC4624 /* XHNetworkCache.m in Sources */,
+				6023A91D1FB53F7100712C1B /* XHNetworkCache.m in Sources */,
 				4BE4D68A1D1E2BCF00CC4624 /* ViewController.m in Sources */,
 				4BE4D6751D1E296300CC4624 /* main.m in Sources */,
 			);
