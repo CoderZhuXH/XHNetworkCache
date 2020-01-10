@@ -98,6 +98,22 @@
     id cacheJson = [XHNetworkCache cacheJsonWithURL:self.URL params:self.params];
     NSLog(@"缓存数据:%@",cacheJson);
 }
+
+/**
+ *  检测数据是否已缓存
+ */
+- (IBAction)checkCache:(UIButton *)sender {
+    
+    BOOL result = [XHNetworkCache checkCacheWithURL:self.URL params:self.params];
+    if(result){
+        NSLog(@"该数据已缓存");
+    }else{
+        NSLog(@"该数据未缓存");
+    }
+}
+
+
+
 /**
  *  缓存数据大小(M)
  */

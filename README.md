@@ -17,6 +17,7 @@
 
 ### 更新记录:
 
+*   2020.01.10 -- v1.5.0 -->增加检测该数据是否已缓存接口...
 *   2017.09.30 -- v1.4.0 -->已知问题修复及优化...
 *	2017.06.16 -- v1.3.0 -->缓存及获取缓存接口增加请求参数(可选)...
 *	2016.09.04 -- v1.2.3 -->增加+(NSString *)cacheSizeFormat方法...
@@ -59,26 +60,34 @@
     }];
 
 ```
-### 3.获取缓存数据
+
+### 3.该数据是否已缓存
+```objc
+//获取缓存数据(参数1:请求URL,参数2:请求参数,返回:YES已缓存,NO未缓存)
+ BOOL result = [XHNetworkCache checkCacheWithURL:self.URL params:self.params];
+
+```
+
+### 4.获取缓存数据
 ```objc
 //获取缓存数据(参数1:请求URL,参数2:请求参数,返回:JSON数据)
 id JsonCache = [XHNetworkCache cacheJsonWithURL:self.URL params:self.params];
 
 ```
-### 4.获取缓存路径
+### 5.获取缓存路径
 ```objc
 //获取缓存路径
  NSString *path = [XHNetworkCache cachePath];
 
 ```
-### 5.清除缓存
+### 6.清除缓存
 ```objc
 //清除缓存
 [XHNetworkCache clearCache];
 
 ```
 
-### 6.获取缓存总大小(M)
+### 7.获取缓存总大小(M)
 ```objc
 //获取缓存大小(M)
 float cacheSize = [XHNetworkCache cacheSize];

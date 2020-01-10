@@ -30,7 +30,7 @@
 }
 
 +(void)save_asyncJsonResponseToCacheFile:(id)jsonResponse andURL:(NSString *)URL completed:(nullable XHNetworkCacheCompletionBlock)completedBlock;{
-
+    
     [self save_asyncJsonResponseToCacheFile:jsonResponse andURL:URL params:nil completed:completedBlock];
 }
 
@@ -43,14 +43,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if(completedBlock)  completedBlock(result);
-
+            
         });
     });
 }
 
 +(id)cacheJsonWithURL:(NSString *)URL{
     
-   return [self cacheJsonWithURL:URL params:nil];
+    return [self cacheJsonWithURL:URL params:nil];
     
 }
 
@@ -59,12 +59,26 @@
     if(URL==nil) return nil;
     NSString *path = [self cacheFilePathWithURL:URL params:params];
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:path isDirectory:nil] == YES) {
+    if([self checkCacheWithURL:URL params:params]){
         NSData *data = [fileManager contentsAtPath:path];
         return [self dataToJson:data];
     }
     return nil;
 }
+
+
++(BOOL)checkCacheWithURL:(NSString *)URL{
+    
+    return [self checkCacheWithURL:URL params:nil];
+}
+
++(BOOL)checkCacheWithURL:(NSString *)URL params:(nullable NSDictionary *)params{
+    if(URL==nil) return NO;
+    NSString *path = [self cacheFilePathWithURL:URL params:params];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:path isDirectory:nil];
+}
+
 
 +(BOOL)clearCache
 {

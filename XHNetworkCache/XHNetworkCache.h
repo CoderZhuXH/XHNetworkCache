@@ -77,6 +77,20 @@ typedef void(^XHNetworkCacheCompletionBlock)(BOOL result);
  */
 +(id )cacheJsonWithURL:(NSString *)URL params:(nullable NSDictionary *)params;
 
+
+/// 检测是否已缓存该数据
+/// @param URL 数据请求URL
+/// @return YES已缓存, NO未缓存
++(BOOL)checkCacheWithURL:(NSString *)URL;
+
+
+/// 检测是否已缓存该数据
+/// @param URL 数据请求URL
+/// @param params  数据请求参数
+/// @return YES已缓存, NO未缓存
++(BOOL)checkCacheWithURL:(NSString *)URL params:(nullable NSDictionary *)params;
+
+
 /**
  *  获取缓存路径
  *
